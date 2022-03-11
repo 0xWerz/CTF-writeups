@@ -462,7 +462,7 @@ Could not open %s for writing
 Path: esults a file? [y/N]: words      = 2
 Total lines      = 2
 oot/root.txt
-6eddd0a82cdbded0add46c264f939a16
+6eddd0a82cdbded0add46c264f939a16   ## THE FLAG !!!
 aliases
 ethers
 group
