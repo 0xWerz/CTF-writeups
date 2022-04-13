@@ -10,43 +10,6 @@ lets add the ip to to the `/etc/hosts` file and name it `secret.htb`
 startup nmap scan | **-sC for the default set of scripts**. | **-sV for Enables version detection**. | **-T4 for sending the traffic fast**.
 >`nmap -sC -sV -T4 10.10.11.120`
 
-
-![alt text](https://i.postimg.cc/vTDsM23v/Screenshot-20220309-125330.png)
-## Open Ports
-|Ports|Service|Takeaways|
-|------|-----|-----|
-|22|SSH|OpenSSH 8.2p1|
-|80|HTTP|nginx 1.18.0|
-|3000|HTTP|Node.js|
-
-Looks like we got a two webservers running with the same **http title** kinda sus
-
-#### Enumeration | ngnix
-
-I will use `gobuster` with [SecLists](https://github.com/danielmiessler/SecLists) wordlists to run the URL bruteforce
->`gobuster dir -u http://secret.htb -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt | tee web-enum.txt`
-
-![alt text](# Secret HTB | 0xwerz | 01/15/22 
-### The official [box page](https://app.hackthebox.com/machines/Secret) on HTB 
-![alt text](https://i.postimg.cc/NjYF1BM9/Secret-Banner.jpg)
-### The writeup:
-#### System Scan | **IP: 10.10.11.120***
-lets add the ip to to the `/etc/hosts` file and name it `secret.htb`
-> `echo '10.10.11.120    secret.htb ' >> /etc/hosts`
-
-
-startup nmap scan | **-sC for the default set of scripts**. | **-sV for Enables version detection**. | **-T4 for sending the traffic fast**.
->`nmap -sC -sV -T4 10.10.11.120`
-
-
-![alt text](https://i.postimg.cc/vTDsM23v/Screenshot-20220309-125330.png)
-### Open Ports
-|Ports|Service|Takeaways|
-|------|-----|-----|
-|22|SSH|OpenSSH 8.2p1|
-|80|HTTP|nginx 1.18.0|
-|3000|HTTP|Node.js|
-
 Looks like we got a two webservers running with the same **http title** kinda sus
 
 #### Enumeration | ngnix
