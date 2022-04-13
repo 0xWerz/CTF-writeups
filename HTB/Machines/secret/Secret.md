@@ -9,6 +9,12 @@ lets add the ip to to the `/etc/hosts` file and name it `secret.htb`
 
 startup nmap scan | **-sC for the default set of scripts**. | **-sV for Enables version detection**. | **-T4 for sending the traffic fast**.
 >`nmap -sC -sV -T4 10.10.11.120`
+## Open Ports
+|Ports|Service|Takeaways|
+|------|-----|-----|
+|22|SSH|OpenSSH 8.2p1|
+|80|HTTP|nginx 1.18.0|
+|3000|HTTP|Node.js|
 
 Looks like we got a two webservers running with the same **http title** kinda sus
 
