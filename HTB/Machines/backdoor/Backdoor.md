@@ -38,8 +38,8 @@ backdoor.htb:1337
 |Ports|Service|Takeaways|
 |------|-----|-----|
 |22|SSH|OpenSSH 8.2p1|
-|80|HTTP|nginx 1.18.0|
-|1337|HTTP|Node.js|
+|80|HTTP|Apache httpd 2.4.41|
+|1337|waste?|none|
 
 now lets check the ports with nmap.
 
