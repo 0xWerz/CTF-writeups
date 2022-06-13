@@ -1,2 +1,2 @@
 # CTF-Writeups
-Some CTF walkthrough
+Some CTF writeup's
