@@ -2,7 +2,7 @@
 
 ### The official [box page](https://app.hackthebox.com/machines/Backdoor) on HTB 
 
-![alt text](./img/Backdoor.png)
+<img src="./img/Backdoor.png" alt="pandora poster" width="500"/>
 
 ### Walkthrough
 
