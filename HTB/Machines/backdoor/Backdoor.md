@@ -2,7 +2,7 @@
 
 ### The official [box page](https://app.hackthebox.com/machines/Backdoor) on HTB 
 
-![alt text](https://i.postimg.cc/zft4BQd5/Backdoor.png)
+![alt text](./img/Backdoor.png)
 
 ### Walkthrough
 

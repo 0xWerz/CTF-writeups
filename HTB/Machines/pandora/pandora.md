@@ -2,9 +2,9 @@
 
 ### The official [box page](https://app.hackthebox.com/machines/Pandora) on HTB
 
-![alt text](https://i.postimg.cc/K8nT8ZmK/Pandora.png)
+![alt text](./img/Pandora.png)
 
-### Walkthrought
+### Walkthrough
 #### Port scan | *IP 10.10.11.136**
 
 First, lets **echo** the ip to the `/etc/hosts` file with `backdoor.htb` name.
@@ -205,7 +205,7 @@ I’ll set pandora.panda.htb to 127.0.0.1 in my /etc/hosts file, then I’ll rec
 ``` bash
 ssh -L 9001:localhost:80 daniel@pandora.htb
 ```
-![pandora_cms_page](pandora_page.png)
+![pandora_cms_page](./img/pandora_page.png)
 
 Navigating to localhost.localdomain/pandora_console will show us a login page for some software called Pandora FMS. according to the version that is typed in the bottom the page **v7.0NG.742_FIX_PERL2020** there is are lots of [CVEs](https://blog.sonarsource.com/pandora-fms-742-critical-code-vulnerabilities-explained/) one of the vulns says that its a sql vuln.
 
@@ -213,7 +213,7 @@ The injections is in `/include/chart_generator.php` It passes $_REQUEST['session
 
 I'll try to request a `?session_id='` parameter to `include/chart_generator.php`, and it returns an SQL error:
 
-![sql_inj](sql_inj.png)
+![sql_inj](./img/sql_inj.png)
 
 I'll use sqlmap for this injection, so I will need to use a great tool called proxychains. Proxychains was designed to create a chain of proxies that allow you to pivot your tools into systems without having to install tools on the other side of whatever you are attacking into.
 
