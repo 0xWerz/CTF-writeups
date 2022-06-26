@@ -2,8 +2,11 @@
 
 ### The official [box page](https://app.hackthebox.com/machines/Pandora) on HTB
 
-<img src="./img/Pandora.png" alt="pandora poster" width="500"/>
 
+<p align="center">
+
+<img src="./img/Pandora.png" alt="pandora poster" width="500"/>
+</p>
 ### Walkthrough
 #### Port scan | *IP 10.10.11.136**
 

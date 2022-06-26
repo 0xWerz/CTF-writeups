@@ -1,6 +1,11 @@
 # Secret HTB | 0xwerz | 01/15/22 
 ### The official [box page](https://app.hackthebox.com/machines/Secret) on HTB 
+
+<p align="center">
 <img src="./img/Secret.png" alt="pandora poster" width="500"/>
+</p>
+
+
 ### The writeup:
 #### System Scan | **IP: 10.10.11.120**
 lets add the ip to to the `/etc/hosts` file and name it `secret.htb`
