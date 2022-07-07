@@ -390,7 +390,9 @@ we need to decode the password that held by the backdoor variable, we can use a 
 
 ![pwd_decode](/img/pwd_decode.png)
 
-So just like the function we’ve taken the values of backdoor, then converted from Little Endian to Hex and then XOR’d it. The result is the root password.
+So just like the function we’ve taken the values of backdoor, then converted from Little Endian to Hex and then XOR’d it. The result is the root password. 
+
+template: [gchq](https://gchq.github.io/CyberChef/#recipe=Swap_endianness('Hex',31,true)From_Hex('Auto')XOR(%7B'option':'Hex','string':'96'%7D,'Standard',false)&input=MHhhNQoweGE5ZjQKMHhiY2YwYjVlMwoweGIyZDZmNGEwZmRhMGIzZDYKMHhmZGIzZDZlNwoweGY3YmJmZGM4CjB4YTRiM2EzZjMKMHhmMGU3YWJkNg)
 
 ```bash
 [werz@Arch root]$ ssh root@10.10.11.146
