@@ -1,6 +1,5 @@
 # Undetected HTB | 0xwerz | 03/02/22 
 ### The official [box page](https://app.hackthebox.com/machines/Undetected) on HTB 
-
 <p align="center">
 <img src="./img/undetected.png" alt="pandora poster" width="500"/>
 </p>
