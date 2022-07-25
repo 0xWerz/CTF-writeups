@@ -1,2 +1,14 @@
 # CTF-Writeups
-some CTF writeup's
+
+## HTB
+### Boxes:
+- [Backdoor](/HTB/Machines/backdoor/Backdoor.md)
+- [Pandora](/HTB/Machines/pandora/pandora.md)
+- [Secret](/HTB/Machines/secret/Secret.md)
+- [Undetected](/HTB/Machines/undetected/undetected.md)
+- [Acute](/HTB/Machines/acute/Acute.md)
+
+
+## 247CTF
+
+- [tips-and-tricks](/247ctf/tips-and-tricks/tips-and-tricks.md)
