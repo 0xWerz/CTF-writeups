@@ -49,12 +49,12 @@ So with have a single http/ssl port open and visiting `https://10.10.11.145` ret
 
 so we got a hit back on `https://atsserver.acute.local/`
 
-![web page](/img/webpage.png)
+![web page](img/webpage.png)
 ### Web page enumeration
 
 The about page may have some useful usernames under the `who we work with` headline.
 
-![employees names](/img/who_we_work_with.png)
+![employees names](img/who_we_work_with.png)
 
 save them on a file list we may need them:
 ```
@@ -70,18 +70,18 @@ echo "Awallace\nChall\nEdavies\nImonks\nJmorgan\nLhopkins" > users.enum
 ```
 
 we also have a doc file:
-![docx](/img/docx.png)
+![docx](img/docx.png)
 
 let's take a look
 ,there is a bunch of information.
 - two links for staff inducation pages both returns 404
 - there is a interesting section `IT overview` that gives a default password `Password1!`, and even mentions that some staff are not changing it:
 
-    ![default pwd](/img/default_pwd.png)
+    ![default pwd](img/default_pwd.png)
 
 we also have a windows PowerShell Web Access (PWSA) in the `Induction meetings with management staff` section:
 
-![pwsa_link](/img/pwsa.png)
+![pwsa_link](img/pwsa.png)
 
 that goes to `https://atsserver.acute.local/Acute_Staff_Access`
 
@@ -90,7 +90,7 @@ if we check the metadata for the doc file we catch up in the description a hostn
 let's give all these information we got a try to login on that web powershell.
 
 After some blind trys we got a valind request:
-![vlid login](/img/pwsa_valid_login.png)
+![vlid login](img/pwsa_valid_login.png)
 
 and we are in as edavies!
 
