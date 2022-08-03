@@ -7,6 +7,7 @@
 - [Secret](/HTB/Machines/secret/Secret.md)
 - [Undetected](/HTB/Machines/undetected/undetected.md)
 - [Acute](/HTB/Machines/acute/Acute.md)
+- [Late](/HTB/Machines/late/late.md)
 
 
 ## 247CTF
