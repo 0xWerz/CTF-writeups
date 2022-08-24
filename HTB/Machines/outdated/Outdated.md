@@ -1,2 +1,2 @@
 # Active machine:
-[Writeup](https://0xwerz.github.io/content/htb/Outdated.pdf)
+[Writeup](https://0xwerz.github.io/protected/htb/outdated.pdf)
