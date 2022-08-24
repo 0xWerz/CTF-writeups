@@ -1,12 +1,5 @@
----
-title: "Timelapse -- HTB walkthrough"
-Author : '0xWerz'
-description: "https://app.hackthebox.com/machines/timelapse"
-date: 2022-03-26T06:24:55+13:00
-draft: true
-tags : ['htb', 'windows', 'easy', 'retired','smbclient','laps','evil-winrm']
-aliases: [/ctf/htb/boxes/timelapse/]
----
+
+Timelapse HTB | 0xwerz | 20/03/22
 
 The official [box page](https://app.hackthebox.com/machines/Timelapse) on HTB
 
