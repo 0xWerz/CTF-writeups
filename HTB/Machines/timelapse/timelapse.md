@@ -8,9 +8,9 @@ The official [box page](https://app.hackthebox.com/machines/Timelapse) on HTB
 
 #### System Scan | **IP: 10.10.11.152**
 
-let's add the ip to to the `/etc/hosts` file and name it `undetected.htb`
+let's add the ip to to the `/etc/hosts` file and name it `timelapse.htb`
 
-> `echo '10.10.11.152 undetected.htb ' >> /etc/hosts`
+> `echo '10.10.11.152 timelapse.htb ' >> /etc/hosts`
 
 startup full ports nmap scan | **-sC for the default set of scripts**. | **-sV for Enables version detection**. | **-T4 for sending the traffic fast**.
 
