@@ -8,7 +8,7 @@
 - [Undetected](/HTB/Machines/undetected/undetected.md)
 - [Acute](/HTB/Machines/acute/Acute.md)
 - [Late](/HTB/Machines/late/late.md)
-- []()
+- [Seventeen](/HTB/Machines/seventeen/seventeen.md)
 
 ## 247CTF
 
