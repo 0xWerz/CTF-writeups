@@ -13,3 +13,16 @@
 ## 247CTF
 
 - [tips-and-tricks](/247ctf/tips-and-tricks/tips-and-tricks.md)
+
+
+## gdg-Algiers
+
+- pwn
+    * [counter](./GDG-Algiers-2022/pwn/counter/counter.md)
+- web
+    * [cookauth](./GDG-Algiers-2022/web/cookauth/cookauth.md)
+    * [ezphp](./GDG-Algiers-2022/web/ezphp/ezphp.md)
+    * [ezphp-fixed](./GDG-Algiers-2022/web/ezphp-fixed/ezphp-fixed.md)
+
+- jail
+    * [counter](./GDG-Algiers-2022/pwn/counter/counter.md)
